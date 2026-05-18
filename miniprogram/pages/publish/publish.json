@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "image-upload": "/components/image-upload/image-upload"
+  },
+  "navigationBarTitleText": "发布商品"
+}

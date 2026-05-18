@@ -1,0 +1,26 @@
+<view class="page-container">
+  <!-- 顶部操作栏 -->
+  <view class="history-header" wx:if="{{list.length > 0}}">
+    <text class="history-count">共 {{list.length}} 条记录</text>
+    <text class="history-clear" bindtap="onClearAll">清除全部</text>
+  </view>
+
+  <!-- 加载态 -->
+  <view class="loading-wrap" wx:if="{{loading}}">
+    <text class="text-muted">加载中...</text>
+  </view>
+
+  <!-- 历史列表 -->
+  <view class="history-list" wx:if="{{!loading && list.length > 0}}">
+    <block wx:for="{{list}}" wx:key="goodsId">
+      <goods-card goods="{{item}}" layout="list" bindtap="onGoodsTap" />
+    </block>
+  </view>
+
+  <!-- 空状态 -->
+  <empty-state
+    wx:if="{{!loading && list.length === 0}}"
+    title="暂无浏览记录"
+    description="快去首页逛逛吧"
+  />
+</view>

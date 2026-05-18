@@ -1,0 +1,27 @@
+# 微信小程序开发者工具 — 私有配置（含个人设置，不应提交）
+project.private.config.json
+
+# IDE 配置（个人编辑器设置）
+.vscode/
+
+# Claude Code 本地数据
+.claude/
+
+# 外部参考技能库（非本项目代码）
+SKILLS/
+
+# 云函数依赖
+cloudfunctions/*/node_modules/
+
+# 通用依赖
+node_modules/
+
+# macOS
+.DS_Store
+
+# Windows
+Thumbs.db
+
+# 临时文件
+*.tmp
+*.temp

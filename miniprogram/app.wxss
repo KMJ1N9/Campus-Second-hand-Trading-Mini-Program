@@ -1,0 +1,21 @@
+@import './styles/tokens.wxss';
+@import './styles/common.wxss';
+
+page {
+  --font-heading: -apple-system, BlinkMacSystemFont, "PingFang SC", "Helvetica Neue", sans-serif;
+  --font-body: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif;
+  --font-price: "SF Mono", "Menlo", monospace;
+
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  line-height: 1.6;
+  color: var(--color-foreground);
+  background-color: var(--color-background);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* 安全区适配 */
+.safe-area-bottom {
+  padding-bottom: constant(safe-area-inset-bottom);
+  padding-bottom: env(safe-area-inset-bottom);
+}

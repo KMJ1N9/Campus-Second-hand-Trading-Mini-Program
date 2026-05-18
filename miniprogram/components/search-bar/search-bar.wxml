@@ -1,0 +1,23 @@
+<view class="search-bar">
+  <view class="search-input-wrap">
+    <image class="search-icon" src="/assets/icons/search.png" mode="aspectFit" />
+    <input
+      class="search-input"
+      type="text"
+      placeholder="{{placeholder}}"
+      value="{{value}}"
+      confirm-type="search"
+      bindinput="onInput"
+      bindconfirm="onSearch"
+      bindfocus="onFocus"
+    />
+    <image
+      wx:if="{{value}}"
+      class="clear-icon"
+      src="/assets/icons/close.png"
+      mode="aspectFit"
+      bindtap="onClear"
+    />
+  </view>
+  <view class="search-action" wx:if="{{showAction}}" bindtap="onCancel">取消</view>
+</view>

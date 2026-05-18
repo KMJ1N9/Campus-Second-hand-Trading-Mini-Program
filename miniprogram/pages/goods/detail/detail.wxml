@@ -1,0 +1,99 @@
+<view class="page-container" wx:if="{{!loading}}">
+  <!-- 图片轮播 -->
+  <swiper
+    class="detail-swiper"
+    indicator-dots="{{goods.images && goods.images.length > 1}}"
+    indicator-color="rgba(255,255,255,0.5)"
+    indicator-active-color="#FFFFFF"
+    autoplay="{{false}}"
+  >
+    <swiper-item wx:for="{{goods.images}}" wx:key="*this">
+      <image class="swiper-image" src="{{item}}" mode="aspectFill" bindtap="onPreviewImage" data-index="{{index}}" />
+    </swiper-item>
+  </swiper>
+
+  <!-- 价格区 -->
+  <view class="detail-price-section">
+    <view class="flex-between">
+      <view class="detail-price">
+        <text class="text-accent text-3xl font-bold">{{util.formatPrice(goods.price)}}</text>
+        <text class="text-sm text-muted original-price" wx:if="{{goods.originalPrice}}">{{util.formatPrice(goods.originalPrice)}}</text>
+      </view>
+      <view class="tag tag-accent" wx:if="{{goods.status === 'selling'}}">在售</view>
+      <view class="tag tag-muted" wx:if="{{goods.status === 'reserved'}}">已预订</view>
+      <view class="tag tag-muted" wx:if="{{goods.status === 'sold'}}">已售出</view>
+    </view>
+    <view class="detail-title">{{goods.title}}</view>
+  </view>
+
+  <!-- 商品信息 -->
+  <view class="detail-card">
+    <view class="detail-info-row">
+      <text class="detail-info-label">成色</text>
+      <text class="detail-info-value">{{goods.conditionName || util.getConditionName(goods.condition)}}</text>
+    </view>
+    <view class="detail-info-row">
+      <text class="detail-info-label">分类</text>
+      <text class="detail-info-value">{{goods.categoryName || util.getCategoryName(goods.category)}}</text>
+    </view>
+    <view class="detail-info-row" wx:if="{{goods.location}}">
+      <text class="detail-info-label">地点</text>
+      <text class="detail-info-value">{{goods.location}}</text>
+    </view>
+    <view class="detail-info-row">
+      <text class="detail-info-label">发布时间</text>
+      <text class="detail-info-value">{{goods.publishTimeText || '未知'}}</text>
+    </view>
+    <view class="detail-info-row">
+      <text class="detail-info-label">浏览</text>
+      <text class="detail-info-value">{{goods.view_count || 0}} 次</text>
+    </view>
+  </view>
+
+  <!-- 商品描述 -->
+  <view class="detail-card" wx:if="{{goods.description}}">
+    <view class="detail-section-title">商品描述</view>
+    <view class="detail-desc">{{goods.description}}</view>
+    <view class="detail-tags" wx:if="{{goods.tags && goods.tags.length}}">
+      <text class="tag tag-muted" wx:for="{{goods.tags}}" wx:key="*this">{{item}}</text>
+    </view>
+  </view>
+
+  <!-- 卖家信息 -->
+  <view class="detail-card">
+    <view class="detail-section-title">卖家信息</view>
+    <view class="seller-info">
+      <image class="seller-avatar" src="{{seller.avatar || '/assets/images/default-avatar.png'}}" mode="aspectFill" />
+      <view class="seller-detail">
+        <view class="seller-name">
+          {{seller.nickname || '匿名用户'}}
+          <text class="seller-auth" wx:if="{{seller.is_auth}}">✓ 已认证</text>
+        </view>
+        <view class="seller-school" wx:if="{{seller.school}}">{{seller.school}}</view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 底部留白 -->
+  <view style="height: 120rpx;"></view>
+
+  <!-- 底部操作栏 -->
+  <view class="detail-footer safe-area-bottom">
+    <view class="footer-left">
+      <view class="footer-icon-btn" bindtap="onToggleLike">
+        <text class="footer-icon">{{isLiked ? '❤️' : '🤍'}}</text>
+        <text class="footer-icon-text">{{goods.like_count || 0}}</text>
+      </view>
+      <view class="footer-icon-btn" bindtap="onShare">
+        <text class="footer-icon">📤</text>
+        <text class="footer-icon-text">分享</text>
+      </view>
+    </view>
+    <button class="btn btn-primary flex-1" bindtap="onContactSeller" wx:if="{{goods.status === 'selling'}}">联系卖家</button>
+    <button class="btn btn-ghost flex-1" wx:if="{{goods.status === 'sold'}}" disabled>已售出</button>
+  </view>
+</view>
+
+<view class="page-container flex-center" wx:if="{{loading}}" style="height:100vh;">
+  <text class="text-muted">加载中...</text>
+</view>

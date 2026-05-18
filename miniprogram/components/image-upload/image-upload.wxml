@@ -1,0 +1,17 @@
+<view class="image-upload">
+  <view class="upload-grid">
+    <block wx:for="{{images}}" wx:key="*this">
+      <view class="upload-item">
+        <image class="upload-image" src="{{item}}" mode="aspectFill" bindtap="onPreview" data-index="{{index}}" />
+        <view class="upload-remove" bindtap="onRemove" data-index="{{index}}">✕</view>
+        <view class="upload-cover" wx:if="{{index === 0}}">封面</view>
+      </view>
+    </block>
+    <view class="upload-item upload-btn" wx:if="{{images.length < maxCount}}" bindtap="onChoose">
+      <view class="upload-add-icon">+</view>
+      <view class="upload-add-text">{{images.length}}/{{maxCount}}</view>
+    </view>
+  </view>
+  <view class="upload-tip" wx:if="{{tip}}">{{tip}}</view>
+  <view class="upload-tip text-destructive" wx:if="{{error}}">{{error}}</view>
+</view>

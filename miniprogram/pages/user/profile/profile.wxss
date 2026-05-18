@@ -1,0 +1,77 @@
+/* pages/user/profile/profile.wxss */
+
+.profile-avatar-section {
+  display: flex;
+  justify-content: center;
+  padding: var(--space-6) 0;
+  background-color: var(--color-surface);
+}
+
+.avatar-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: none;
+  padding: 0;
+  margin: 0;
+  line-height: 1;
+  border: none;
+}
+.avatar-btn::after { border: none; }
+.avatar-btn[open-type="chooseAvatar"] { border: none; }
+
+.profile-avatar {
+  width: 160rpx;
+  height: 160rpx;
+  border-radius: var(--radius-full);
+  background-color: var(--color-muted);
+}
+
+.avatar-tip {
+  margin-top: var(--space-2);
+  font-size: var(--text-sm);
+  color: var(--color-muted-foreground);
+}
+
+/* 表单 */
+.form-section {
+  margin-top: var(--space-2);
+  background-color: var(--color-surface);
+}
+
+.form-item {
+  display: flex;
+  align-items: center;
+  padding: var(--space-4);
+  border-bottom: 1rpx solid var(--color-border-light);
+}
+
+.form-label {
+  width: 140rpx;
+  font-size: var(--text-base);
+  color: var(--color-foreground);
+  font-weight: 500;
+  flex-shrink: 0;
+}
+
+.form-input {
+  flex: 1;
+  font-size: var(--text-base);
+  text-align: right;
+  color: var(--color-foreground);
+}
+
+.input-placeholder {
+  color: var(--color-muted-foreground);
+}
+
+.form-error {
+  padding: var(--space-1) var(--space-4);
+  font-size: var(--text-xs);
+  color: var(--color-destructive);
+}
+
+/* 保存 */
+.save-wrap {
+  padding: var(--space-6) var(--space-4);
+}

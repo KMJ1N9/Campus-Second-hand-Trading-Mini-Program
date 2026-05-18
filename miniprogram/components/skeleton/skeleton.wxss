@@ -1,0 +1,53 @@
+.skeleton-list {
+  padding: var(--space-2) var(--space-3);
+}
+
+.skeleton-card {
+  background: var(--color-surface);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  margin-bottom: var(--space-2);
+}
+
+.skeleton-card.grid {
+  display: inline-block;
+  width: calc(50% - var(--space-1));
+}
+.skeleton-card.grid:nth-child(odd) {
+  margin-right: var(--space-2);
+}
+
+.skeleton-card.list {
+  display: flex;
+}
+.skeleton-card.list .skeleton-image {
+  width: 240rpx;
+  height: 240rpx;
+  flex-shrink: 0;
+}
+.skeleton-card.grid .skeleton-image {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+}
+
+.skeleton-image {
+  background-color: var(--color-muted);
+}
+
+.skeleton-body {
+  flex: 1;
+  padding: var(--space-3);
+}
+
+.skeleton-line {
+  height: 28rpx;
+  margin-bottom: var(--space-2);
+  background: linear-gradient(90deg, var(--color-muted) 25%, #F1F5F9 50%, var(--color-muted) 75%);
+  background-size: 200% 100%;
+  animation: skeleton-loading 1.5s ease-in-out infinite;
+  border-radius: 6rpx;
+}
+
+.skeleton-line-long { width: 90%; }
+.skeleton-line-mid { width: 60%; }
+.skeleton-line-short { width: 40%; }

@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "goods-card": "/components/goods-card/goods-card",
+    "empty-state": "/components/empty-state/empty-state",
+    "skeleton": "/components/skeleton/skeleton"
+  },
+  "navigationBarTitleText": "商品分类"
+}

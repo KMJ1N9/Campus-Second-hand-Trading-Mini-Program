@@ -1,0 +1,42 @@
+<view class="page-container">
+  <!-- 分类入口 -->
+  <view class="category-grid">
+    <view
+      class="category-card {{activeCategory === item.id ? 'category-card-active' : ''}}"
+      wx:for="{{categories}}"
+      wx:key="id"
+      wx:if="{{item.id !== 'all'}}"
+      data-id="{{item.id}}"
+      bindtap="onCategoryTap"
+    >
+      <image class="category-icon" src="/assets/icons/cat-{{item.icon}}.png" mode="aspectFit" />
+      <text class="category-name">{{item.name}}</text>
+    </view>
+  </view>
+
+  <!-- 推荐商品 -->
+  <view class="section-header">
+    <text class="section-title">{{activeCategory === 'all' ? '热门推荐' : activeCategoryName}}</text>
+  </view>
+
+  <view class="goods-grid" wx:if="{{!loading && goodsList.length > 0}}">
+    <view class="goods-col">
+      <block wx:for="{{leftList}}" wx:key="_id">
+        <goods-card goods="{{item}}" layout="grid" bindtap="onGoodsTap" />
+      </block>
+    </view>
+    <view class="goods-col">
+      <block wx:for="{{rightList}}" wx:key="_id">
+        <goods-card goods="{{item}}" layout="grid" bindtap="onGoodsTap" />
+      </block>
+    </view>
+  </view>
+
+  <skeleton wx:if="{{loading}}" count="{{6}}" layout="grid" />
+
+  <empty-state
+    wx:if="{{!loading && goodsList.length === 0}}"
+    title="暂无相关商品"
+    description="换个分类看看吧"
+  />
+</view>

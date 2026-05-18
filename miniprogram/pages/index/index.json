@@ -1,0 +1,11 @@
+{
+  "usingComponents": {
+    "goods-card": "/components/goods-card/goods-card",
+    "search-bar": "/components/search-bar/search-bar",
+    "skeleton": "/components/skeleton/skeleton",
+    "empty-state": "/components/empty-state/empty-state"
+  },
+  "navigationBarTitleText": "校园二手交易",
+  "enablePullDownRefresh": true,
+  "onReachBottomDistance": 80
+}

@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "goods-card": "/components/goods-card/goods-card",
+    "empty-state": "/components/empty-state/empty-state"
+  },
+  "navigationBarTitleText": "我的"
+}

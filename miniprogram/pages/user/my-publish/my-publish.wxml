@@ -1,0 +1,51 @@
+<view class="page-container">
+  <!-- Tab 切换 -->
+  <view class="tab-bar">
+    <view
+      class="tab-item {{activeTab === 'selling' ? 'tab-active' : ''}}"
+      data-tab="selling"
+      bindtap="onTabChange"
+    >在售</view>
+    <view
+      class="tab-item {{activeTab === 'sold' ? 'tab-active' : ''}}"
+      data-tab="sold"
+      bindtap="onTabChange"
+    >已售出</view>
+  </view>
+
+  <!-- 加载态 -->
+  <view class="loading-wrap" wx:if="{{loading}}">
+    <text class="text-muted">加载中...</text>
+  </view>
+
+  <!-- 商品列表 -->
+  <view class="publish-list" wx:if="{{!loading && goodsList.length > 0}}">
+    <block wx:for="{{goodsList}}" wx:key="_id">
+      <view class="publish-item-wrap">
+        <goods-card goods="{{item}}" layout="list" bindtap="onGoodsTap" />
+        <view class="publish-actions">
+          <!-- 在售的可编辑 -->
+          <block wx:if="{{activeTab === 'selling'}}">
+            <text class="action-btn" bindtap="onEdit" data-id="{{item._id}}">编辑</text>
+          </block>
+          <text class="action-btn action-delete" bindtap="onDelete" data-id="{{item._id}}">删除</text>
+        </view>
+      </view>
+    </block>
+  </view>
+
+  <!-- 空状态 -->
+  <empty-state
+    wx:if="{{!loading && goodsList.length === 0}}"
+    title="{{activeTab === 'selling' ? '还没有在售的商品' : '还没有售出的商品'}}"
+    description="去发布一件闲置物品吧"
+    actionText="去发布"
+    bindaction="onGoPublish"
+  />
+
+  <!-- 加载更多 -->
+  <view class="load-more" wx:if="{{goodsList.length > 0}}">
+    <text wx:if="{{loadingMore}}">加载中...</text>
+    <text wx:elif="{{!hasMore}}">— 没有更多了 —</text>
+  </view>
+</view>

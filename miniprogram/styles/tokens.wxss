@@ -1,0 +1,74 @@
+/* ============================================
+   设计Token — 校园二手交易小程序
+   遵循 ui-ux-pro-max Marketplace P2P 配色方案
+   ============================================ */
+
+page {
+  /* ===== 色彩系统 ===== */
+  --color-primary: #7C3AED;
+  --color-primary-light: #A78BFA;
+  --color-primary-dark: #6D28D9;
+  --color-on-primary: #FFFFFF;
+
+  --color-secondary: #A78BFA;
+  --color-on-secondary: #1E293B;
+
+  --color-accent: #16A34A;
+  --color-on-accent: #FFFFFF;
+
+  --color-background: #FAF5FF;
+  --color-surface: #FFFFFF;
+  --color-foreground: #1E293B;
+
+  --color-muted: #ECEEF9;
+  --color-muted-foreground: #64748B;
+
+  --color-border: #E2E8F0;
+  --color-border-light: #F1F5F9;
+
+  --color-destructive: #DC2626;
+  --color-on-destructive: #FFFFFF;
+  --color-success: #16A34A;
+  --color-warning: #F59E0B;
+
+  /* ===== 字号（rpx）===== */
+  --text-xs: 22rpx;
+  --text-sm: 26rpx;
+  --text-base: 28rpx;
+  --text-lg: 32rpx;
+  --text-xl: 36rpx;
+  --text-2xl: 40rpx;
+  --text-3xl: 48rpx;
+
+  /* ===== 间距（rpx，8pt系统）===== */
+  --space-1: 8rpx;
+  --space-2: 16rpx;
+  --space-3: 24rpx;
+  --space-4: 32rpx;
+  --space-5: 48rpx;
+  --space-6: 64rpx;
+
+  /* ===== 圆角 ===== */
+  --radius-sm: 8rpx;
+  --radius-md: 12rpx;
+  --radius-lg: 16rpx;
+  --radius-xl: 24rpx;
+  --radius-full: 9999rpx;
+
+  /* ===== 阴影 ===== */
+  --shadow-card: 0 2rpx 12rpx rgba(0, 0, 0, 0.06);
+  --shadow-elevated: 0 4rpx 20rpx rgba(0, 0, 0, 0.10);
+
+  /* ===== 动画 ===== */
+  --transition-fast: 150ms ease-out;
+  --transition-normal: 250ms ease-out;
+  --transition-slow: 350ms ease-out;
+
+  /* ===== z-index层级 ===== */
+  --z-base: 0;
+  --z-dropdown: 10;
+  --z-sticky: 20;
+  --z-overlay: 40;
+  --z-modal: 100;
+  --z-toast: 1000;
+}

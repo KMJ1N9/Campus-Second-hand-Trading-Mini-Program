@@ -1,0 +1,20 @@
+/* pages/user/collection/collection.wxss */
+
+.loading-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-6);
+  min-height: 60vh;
+}
+
+.collect-list {
+  padding: var(--space-2) var(--space-3);
+}
+
+.load-more {
+  text-align: center;
+  padding: var(--space-4);
+  font-size: var(--text-sm);
+  color: var(--color-muted-foreground);
+}

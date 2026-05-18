@@ -1,0 +1,83 @@
+.category-tabs {
+  white-space: nowrap;
+  padding: var(--space-2) var(--space-3);
+  background-color: var(--color-surface);
+}
+
+.category-tab {
+  display: inline-block;
+  padding: 12rpx 28rpx;
+  margin-right: var(--space-2);
+  border-radius: var(--radius-full);
+  font-size: var(--text-sm);
+  color: var(--color-muted-foreground);
+  background-color: var(--color-muted);
+  transition: all var(--transition-fast);
+}
+
+.category-tab-active {
+  background-color: var(--color-primary);
+  color: var(--color-on-primary);
+  font-weight: 600;
+}
+
+/* 排序栏 */
+.sort-bar {
+  display: flex;
+  align-items: center;
+  padding: var(--space-2) var(--space-3);
+  background-color: var(--color-surface);
+  border-bottom: 1rpx solid var(--color-border-light);
+}
+
+.sort-item {
+  margin-right: var(--space-4);
+  font-size: var(--text-sm);
+  color: var(--color-muted-foreground);
+  position: relative;
+}
+
+.sort-active {
+  color: var(--color-primary);
+  font-weight: 600;
+}
+
+/* 商品双列 */
+.goods-grid {
+  display: flex;
+  padding: var(--space-2);
+  gap: var(--space-2);
+}
+
+.goods-col {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+/* 加载更多 */
+.load-more {
+  text-align: center;
+  padding: var(--space-4);
+  font-size: var(--text-sm);
+  color: var(--color-muted-foreground);
+}
+
+/* 回到顶部 */
+.back-top {
+  position: fixed;
+  right: var(--space-4);
+  bottom: 160rpx;
+  width: 80rpx;
+  height: 80rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--color-surface);
+  border-radius: var(--radius-full);
+  box-shadow: var(--shadow-elevated);
+  font-size: var(--text-xl);
+  color: var(--color-primary);
+  z-index: var(--z-sticky);
+}

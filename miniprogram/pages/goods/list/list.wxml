@@ -1,0 +1,26 @@
+<view class="page-container">
+  <!-- 加载态 -->
+  <view class="loading-wrap" wx:if="{{loading}}">
+    <text class="text-muted">加载中...</text>
+  </view>
+
+  <!-- 商品列表 -->
+  <view class="goods-list-wrap" wx:if="{{!loading && goodsList.length > 0}}">
+    <block wx:for="{{goodsList}}" wx:key="_id">
+      <goods-card goods="{{item}}" layout="list" bindtap="onGoodsTap" />
+    </block>
+  </view>
+
+  <!-- 空状态 -->
+  <empty-state
+    wx:if="{{!loading && goodsList.length === 0}}"
+    title="{{categoryName}}分类暂无商品"
+    description="去看看其他分类吧"
+  />
+
+  <!-- 加载更多 -->
+  <view class="load-more" wx:if="{{goodsList.length > 0}}">
+    <text wx:if="{{loadingMore}}">加载中...</text>
+    <text wx:elif="{{!hasMore}}">— 没有更多了 —</text>
+  </view>
+</view>

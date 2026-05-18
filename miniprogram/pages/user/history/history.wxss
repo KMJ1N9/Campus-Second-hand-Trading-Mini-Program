@@ -1,0 +1,36 @@
+/* pages/user/history/history.wxss */
+
+.history-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-3) var(--space-4);
+  background-color: var(--color-surface);
+  border-bottom: 1rpx solid var(--color-border-light);
+}
+
+.history-count {
+  font-size: var(--text-sm);
+  color: var(--color-muted-foreground);
+}
+
+.history-clear {
+  font-size: var(--text-sm);
+  color: var(--color-destructive);
+}
+
+.history-clear:active {
+  opacity: 0.7;
+}
+
+.loading-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-6);
+  min-height: 60vh;
+}
+
+.history-list {
+  padding: var(--space-2) var(--space-3);
+}

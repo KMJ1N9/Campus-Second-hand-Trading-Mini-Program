@@ -1,0 +1,73 @@
+<view class="page-container">
+  <!-- 搜索栏 -->
+  <search-bar
+    value="{{searchKeyword}}"
+    bindinput="onSearchInput"
+    bindsearch="onSearch"
+    bindfocus="onSearchFocus"
+  />
+
+  <!-- 分类标签栏 -->
+  <scroll-view class="category-tabs" scroll-x enable-flex>
+    <view
+      class="category-tab {{activeCategory === item.id ? 'category-tab-active' : ''}}"
+      wx:for="{{categories}}"
+      wx:key="id"
+      data-id="{{item.id}}"
+      bindtap="onCategoryChange"
+    >{{item.name}}</view>
+  </scroll-view>
+
+  <!-- 排序栏 -->
+  <view class="sort-bar">
+    <view class="sort-item {{sortType === 'create_time' ? 'sort-active' : ''}}" data-sort="create_time" bindtap="onSortChange">
+      <text>最新</text>
+    </view>
+    <view class="sort-item {{sortType === 'price_asc' ? 'sort-active' : ''}}" data-sort="price_asc" bindtap="onSortChange">
+      <text>价格 ↑</text>
+    </view>
+    <view class="sort-item {{sortType === 'price_desc' ? 'sort-active' : ''}}" data-sort="price_desc" bindtap="onSortChange">
+      <text>价格 ↓</text>
+    </view>
+    <view class="sort-item {{sortType === 'view_count' ? 'sort-active' : ''}}" data-sort="view_count" bindtap="onSortChange">
+      <text>最热</text>
+    </view>
+  </view>
+
+  <!-- 商品瀑布流 -->
+  <view class="goods-grid" wx:if="{{!loading && goodsList.length > 0}}">
+    <view class="goods-col">
+      <block wx:for="{{leftList}}" wx:key="_id">
+        <goods-card goods="{{item}}" layout="grid" bindtap="onGoodsTap" />
+      </block>
+    </view>
+    <view class="goods-col">
+      <block wx:for="{{rightList}}" wx:key="_id">
+        <goods-card goods="{{item}}" layout="grid" bindtap="onGoodsTap" />
+      </block>
+    </view>
+  </view>
+
+  <!-- 加载态：骨架屏 -->
+  <skeleton wx:if="{{loading && goodsList.length === 0}}" count="{{6}}" layout="grid" />
+
+  <!-- 空状态 -->
+  <empty-state
+    wx:if="{{!loading && goodsList.length === 0}}"
+    title="还没有商品"
+    description="去发布第一件二手商品吧"
+    actionText="去发布"
+    bindaction="onGoPublish"
+  />
+
+  <!-- 加载更多提示 -->
+  <view class="load-more" wx:if="{{goodsList.length > 0}}">
+    <text wx:if="{{loadingMore}}">加载中...</text>
+    <text wx:elif="{{!hasMore}}">— 没有更多了 —</text>
+  </view>
+
+  <!-- 回到顶部 -->
+  <view class="back-top" wx:if="{{showBackTop}}" bindtap="onBackTop">
+    <text>↑</text>
+  </view>
+</view>

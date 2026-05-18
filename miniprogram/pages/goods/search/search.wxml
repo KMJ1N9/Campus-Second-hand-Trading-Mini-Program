@@ -1,0 +1,62 @@
+<view class="page-container">
+  <!-- 搜索栏 -->
+  <search-bar
+    value="{{keyword}}"
+    placeholder="搜索商品..."
+    showAction="{{true}}"
+    bindinput="onInput"
+    bindsearch="onSearch"
+    bindclear="onClear"
+    bindcancel="onCancel"
+  />
+
+  <!-- 搜索历史 -->
+  <view class="search-section" wx:if="{{!keyword && historyList.length > 0}}">
+    <view class="search-header">
+      <text class="search-title">搜索历史</text>
+      <text class="search-clear" bindtap="onClearHistory">清空</text>
+    </view>
+    <view class="search-tags">
+      <view
+        class="search-tag"
+        wx:for="{{historyList}}"
+        wx:key="*this"
+        bindtap="onHistoryTap"
+        data-keyword="{{item}}"
+      >{{item}}</view>
+    </view>
+  </view>
+
+  <!-- 热门搜索 -->
+  <view class="search-section" wx:if="{{!keyword}}">
+    <view class="search-title">热门搜索</view>
+    <view class="search-tags">
+      <view class="search-tag" bindtap="onHistoryTap" data-keyword="教材">教材</view>
+      <view class="search-tag" bindtap="onHistoryTap" data-keyword="手机">手机</view>
+      <view class="search-tag" bindtap="onHistoryTap" data-keyword="自行车">自行车</view>
+      <view class="search-tag" bindtap="onHistoryTap" data-keyword="考研">考研</view>
+      <view class="search-tag" bindtap="onHistoryTap" data-keyword="耳机">耳机</view>
+      <view class="search-tag" bindtap="onHistoryTap" data-keyword="键盘">键盘</view>
+    </view>
+  </view>
+
+  <!-- 搜索结果 -->
+  <view wx:if="{{keyword && !loading && results.length > 0}}">
+    <view class="search-result-header">搜索"{{keyword}}"，共 {{results.length}} 个结果</view>
+    <view class="search-results">
+      <goods-card
+        wx:for="{{results}}"
+        wx:key="_id"
+        goods="{{item}}"
+        layout="list"
+        bindtap="onGoodsTap"
+      />
+    </view>
+  </view>
+
+  <empty-state
+    wx:if="{{keyword && !loading && results.length === 0}}"
+    title="未找到相关商品"
+    description="换个关键词试试吧"
+  />
+</view>

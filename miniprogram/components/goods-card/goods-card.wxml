@@ -1,0 +1,30 @@
+<view class="goods-card {{layout === 'grid' ? 'card-grid' : 'card-list'}}" bindtap="onTap">
+  <view class="card-image-wrap">
+    <image
+      class="card-image"
+      src="{{displayGoods.images && displayGoods.images[0] ? displayGoods.images[0] : '/assets/images/default-avatar.png'}}"
+      mode="aspectFill"
+      lazy-load="{{true}}"
+    />
+    <view class="card-status-tag tag-accent" wx:if="{{displayGoods.status === 'reserved'}}">已预订</view>
+    <view class="card-status-tag tag-muted" wx:if="{{displayGoods.status === 'sold'}}">已售出</view>
+  </view>
+  <view class="card-body">
+    <view class="card-title text-clamp-2">{{displayGoods.title || '未命名商品'}}</view>
+
+    <!-- 价格行——黑色粗体、醒目 -->
+    <view class="card-price-row">
+      <text class="card-price-value">{{util.formatPrice(displayGoods.price)}}</text>
+      <text class="card-price-original" wx:if="{{displayGoods.originalPrice}}">{{util.formatPrice(displayGoods.originalPrice)}}</text>
+    </view>
+
+    <view class="card-meta-row">
+      <text class="card-meta-text" wx:if="{{layout === 'list'}}">{{displayGoods.categoryName || '其他'}} · {{displayGoods.conditionName || '未知'}}</text>
+      <text class="card-meta-text">{{util.formatNumber(displayGoods.like_count || 0)}}人想要</text>
+    </view>
+
+    <view class="card-tags-row" wx:if="{{layout === 'list' && displayGoods.tags && displayGoods.tags.length}}">
+      <text class="tag tag-muted" wx:for="{{displayGoods.tags}}" wx:key="*this" wx:for-item="tag">{{tag}}</text>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,91 @@
+/* pages/setting/setting.wxss */
+
+.setting-section {
+  background-color: var(--color-surface);
+  margin-bottom: var(--space-2);
+}
+
+.setting-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-4);
+  font-size: var(--text-base);
+  color: var(--color-foreground);
+  border-bottom: 1rpx solid var(--color-border-light);
+}
+
+.setting-item:last-child {
+  border-bottom: none;
+}
+
+.setting-item:active {
+  background-color: var(--color-muted);
+}
+
+.setting-right {
+  display: flex;
+  align-items: center;
+}
+
+.setting-value {
+  font-size: var(--text-sm);
+  color: var(--color-muted-foreground);
+  margin-right: var(--space-2);
+}
+
+.setting-arrow {
+  font-size: var(--text-lg);
+  color: var(--color-muted-foreground);
+}
+
+/* 关于弹窗 */
+.about-modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: var(--z-modal);
+  align-items: center;
+  justify-content: center;
+}
+
+.about-modal-show {
+  display: flex;
+}
+
+.about-content {
+  width: 600rpx;
+  background-color: var(--color-surface);
+  border-radius: var(--radius-xl);
+  padding: var(--space-6);
+  text-align: center;
+}
+
+.about-icon {
+  font-size: 80rpx;
+  margin-bottom: var(--space-3);
+}
+
+.about-title {
+  font-size: var(--text-xl);
+  font-weight: 700;
+  color: var(--color-foreground);
+  margin-bottom: var(--space-1);
+}
+
+.about-version {
+  font-size: var(--text-xs);
+  color: var(--color-muted-foreground);
+  margin-bottom: var(--space-3);
+}
+
+.about-desc {
+  font-size: var(--text-sm);
+  color: var(--color-muted-foreground);
+  line-height: 1.6;
+  margin-bottom: var(--space-4);
+}
